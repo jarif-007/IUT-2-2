@@ -1,7 +1,7 @@
 from comparator import compare_asc, compare_desc, compare_abs
 
 
-def selection_sort(arr, compare = compare_asc):
+def selection_sort(arr, compare=compare_asc):
 
     for i in range(len(arr) - 1):
 
@@ -10,11 +10,10 @@ def selection_sort(arr, compare = compare_asc):
 
         for j in range(index, len(arr)):
 
-
             if compare(val, arr[j]):
                 val = arr[j]
                 index = j
-        
+
         arr[i], arr[index] = arr[index], arr[i]
 
 

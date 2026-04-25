@@ -1,7 +1,7 @@
 from comparator import compare_asc, compare_desc, compare_abs
 
 
-def merge_sort(arr, compare = compare_asc):
+def merge_sort(arr, compare=compare_asc):
 
     if len(arr) == 1:
         return arr
