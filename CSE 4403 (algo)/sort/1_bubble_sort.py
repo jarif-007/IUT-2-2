@@ -1,7 +1,6 @@
-import comparator
+from comparator import *
 
-
-def bubble_sort(arr, compare=comparator.compare_asc):
+def bubble_sort(arr, compare=compare_asc):
     swap_count = -1
     while swap_count != 0:
         swap_count = 0
@@ -18,8 +17,8 @@ def main():
     c = a.copy()
 
     bubble_sort(a)
-    bubble_sort(b, comparator.compare_desc)
-    bubble_sort(c, comparator.compare_abs)
+    bubble_sort(b, compare_desc)
+    bubble_sort(c, compare_abs)
 
     print(a)
     print(b)

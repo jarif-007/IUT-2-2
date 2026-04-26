@@ -1,6 +1,6 @@
-import comparator
+from comparator import *
 
-def selection_sort(arr, compare=comparator.compare_asc):
+def selection_sort(arr, compare=compare_asc):
 
     for i in range(len(arr) - 1):
 
@@ -22,8 +22,8 @@ def main():
     c = a.copy()
 
     selection_sort(a)
-    selection_sort(b, comparator.compare_desc)
-    selection_sort(c, comparator.compare_abs)
+    selection_sort(b, compare_desc)
+    selection_sort(c, compare_abs)
 
     print(a)
     print(b)

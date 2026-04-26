@@ -1,7 +1,7 @@
-import comparator
+from comparator import *
 
 
-def insertion_sort(arr, compare=comparator.compare_asc):
+def insertion_sort(arr, compare=compare_asc):
 
     # starting from 1 as 0 is already sorted
     for i in range(1, len(arr)):
@@ -19,8 +19,8 @@ def main():
     c = a.copy()
 
     insertion_sort(a)
-    insertion_sort(b, comparator.compare_desc)
-    insertion_sort(c, comparator.compare_abs)
+    insertion_sort(b, compare_desc)
+    insertion_sort(c, compare_abs)
 
     print(a)
     print(b)

@@ -1,7 +1,7 @@
-import comparator
+from comparator import *
 
 
-def merge_sort(arr, compare=comparator.compare_asc):
+def merge_sort(arr, compare=compare_asc):
 
     if len(arr) == 1:
         return arr
@@ -39,8 +39,8 @@ def main():
     arr = [1, -2, 5, 0, -3]
 
     a = merge_sort(arr)
-    b = merge_sort(arr, comparator.compare_desc)
-    c = merge_sort(arr, comparator.compare_abs)
+    b = merge_sort(arr, compare_desc)
+    c = merge_sort(arr, compare_abs)
 
     print(a)
     print(b)

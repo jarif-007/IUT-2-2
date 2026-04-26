@@ -1,7 +1,7 @@
-import comparator
-
+# someone kindly help how to make this sort work for asc, desc and abs 
 
 def counting_sort(arr):
+    """only works for ascending"""
 
     min_val = min(arr)
     max_val = max(arr)
@@ -18,7 +18,7 @@ def counting_sort(arr):
 
     # converting prefix to index
     index = prefix
-    for i in range (len(index) - 1, 0, -1):
+    for i in range(len(index) - 1, 0, -1):
         index[i] = index[i - 1]
 
     index[0] = 0
