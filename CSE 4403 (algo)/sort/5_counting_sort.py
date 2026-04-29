@@ -1,4 +1,5 @@
-# someone kindly help how to make this sort work for asc, desc and abs 
+# someone kindly help how to make this sort work for asc, desc and abs
+
 
 def counting_sort(arr):
     """only works for ascending"""
@@ -6,35 +7,23 @@ def counting_sort(arr):
     min_val = min(arr)
     max_val = max(arr)
 
-    # Count frequency
-    count = [0] * (max_val - min_val + 1)
+    # open-addressed hash_table
+    count_table = [[] for _ in range(max_val - min_val + 1)]
     for num in arr:
-        count[num - min_val] += 1
+        count_table[num - min_val].append(num)
 
-    # converting count to prefix_sum
-    prefix = count
-    for i in range(1, len(prefix)):
-        prefix[i] += prefix[i - 1]
-
-    # converting prefix to index
-    index = prefix
-    for i in range(len(index) - 1, 0, -1):
-        index[i] = index[i - 1]
-
-    index[0] = 0
-    ans = [None] * len(arr)
-
-    for num in arr:
-        ans[index[num - min_val]] = num
-        index[num - min_val] += 1
-
-    print(ans)
+    # flattening buckets into a flat-list
+    i = 0
+    for bucket in count_table:
+        for num in bucket:
+            arr[i] = num
+            i += 1
 
 
 def main():
     a = [1, -2, 5, 0, -3]
-    a = counting_sort(a)
-    # print(a)
+    counting_sort(a)
+    print(a)
 
 
 if __name__ == "__main__":
