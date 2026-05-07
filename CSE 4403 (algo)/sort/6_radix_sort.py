@@ -1,3 +1,6 @@
+from comparator import *
+
+
 def digit_count(n):
 
     if n == 0:
@@ -11,7 +14,7 @@ def digit_count(n):
     return digits
 
 
-def count_sort(arr, digit_place):
+def count_sort(arr, digit_place, compare):
 
     count_table = [[] for _ in range(10)]
     exp = pow(10, digit_place)
@@ -28,21 +31,28 @@ def count_sort(arr, digit_place):
             arr[i] = num
             i += 1
 
+    if compare == compare_desc:
+        arr.reverse()
 
-def radix_sort(arr):
+
+def radix_sort(arr, compare=compare_asc):
 
     max_val = max(arr)
     digits = digit_count(max_val)
 
     for i in range(digits):
-        count_sort(arr, i)
+        count_sort(arr, i, compare)
 
 
 def main():
-    arr = [99, 11, 22, 77, 88, 66, 55, 44, 33, 13, 57]
-    radix_sort(arr)
+    a = [99, 11, 22, 77, 88, 66, 55, 44, 33, 13, 57]
+    b = a.copy()
 
-    print(arr)
+    radix_sort(a)
+    radix_sort(b, compare_desc)
+
+    print(a)
+    print(b)
 
 
 if __name__ == "__main__":

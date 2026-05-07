@@ -1,14 +1,14 @@
 from comparator import *
 
 def bubble_sort(arr, compare=compare_asc):
-    swap_count = -1
-    while swap_count != 0:
-        swap_count = 0
+    swapped = True
+    while swapped:
+        swapped = False
 
         for i in range(len(arr) - 1):
             if compare(arr[i], arr[i + 1]):
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
-                swap_count += 1
+                swapped = True
 
 
 def main():

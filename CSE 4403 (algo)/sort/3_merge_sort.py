@@ -14,23 +14,23 @@ def merge_sort(arr, compare=compare_asc):
     return merge(left, right, compare)
 
 
-def merge(arr1, arr2, compare):
+def merge(left, right, compare):
 
     result = []
     i = j = 0
 
-    while i < len(arr1) and j < len(arr2):
+    while i < len(left) and j < len(right):
 
-        if not compare(arr1[i], arr2[j]):
-            result.append(arr1[i])
+        if not compare(left[i], right[j]):
+            result.append(left[i])
             i += 1
 
         else:
-            result.append(arr2[j])
+            result.append(right[j])
             j += 1
 
-    result.extend(arr1[i:])
-    result.extend(arr2[j:])
+    result.extend(left[i:])
+    result.extend(right[j:])
 
     return result
 
