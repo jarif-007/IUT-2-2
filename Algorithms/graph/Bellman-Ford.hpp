@@ -7,8 +7,8 @@ vector<int> bellman_ford(vector<tuple<int, int, int>> &edges, int source)
     for (auto &[u, v, wt] : edges)
         maxNode = max(maxNode, max(u, v));
 
-
     int V = maxNode + 1;
+
     vector<int> dist(V, INT_MAX);
     dist[source] = 0;
 
