@@ -1,50 +1,43 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
-struct DijkstraRow
+vector<int> dijkstra(vector<vector<pair<int, int>>> &adj_list, int src)
 {
-    bool known;
-    int dist;
-    int parent;
-};
+    vector<int> dist(adj_list.size(), INT_MAX);
+    unordered_set<int> marked;
 
-vector<DijkstraRow> dijkstra(vector<vector<pair<int, int>>> &adj_list, int source)
-{
-    int v = adj_list.size();
-
-    vector<DijkstraRow> table(v, {false, INT_MAX, -1});
     priority_queue<
+        // (distance, node)
         pair<int, int>,
         vector<pair<int, int>>,
         greater<pair<int, int>>>
         minHeap;
 
-    table[source].dist = 0;
-    minHeap.push({0, source});
+    dist[src] = 0;
+    minHeap.push({dist[src], src});
 
     while (!minHeap.empty())
     {
-        auto [currDist, currNode] = minHeap.top();
+        auto [dist_u, u] = minHeap.top();
         minHeap.pop();
 
-        if (table[currNode].known)
+        if (marked.contains(u))
             continue;
 
-        table[currNode].known = true;
-        auto &neighbors = adj_list[currNode];
+        marked.insert(u);
 
-        for (auto &[neighbor, weight] : neighbors)
+        for (auto &[v, wt] : adj_list[u])
         {
-            auto &neighbor_info = table[neighbor];
-            if (!neighbor_info.known && currDist + weight < neighbor_info.dist)
-            {
-                neighbor_info.dist = currDist + weight;
-                neighbor_info.parent = currNode;
+            if (marked.contains(v))
+                continue;
 
-                minHeap.push({neighbor_info.dist, neighbor});
+            if (dist_u + wt < dist[v])
+            {
+                dist[v] = dist_u + wt;
+                minHeap.push({dist[v], v});
             }
         }
     }
 
-    return table;
+    return dist;
 }

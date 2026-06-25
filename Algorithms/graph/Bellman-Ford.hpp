@@ -1,14 +1,8 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-vector<int> bellman_ford(vector<tuple<int, int, int>> &edges, int source)
+vector<int> bellman_ford(int V, vector<tuple<int, int, int>> &edges, int source)
 {
-    int maxNode = 0;
-    for (auto &[u, v, wt] : edges)
-        maxNode = max(maxNode, max(u, v));
-
-    int V = maxNode + 1;
-
     vector<int> dist(V, INT_MAX);
     dist[source] = 0;
 
