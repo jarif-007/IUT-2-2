@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        vector<int> arr(26);
+        for (auto& c : s)
+            arr[c - 'a']++;
+
+        for (auto& c : t)
+            arr[c - 'a']--;
+
+        for (auto& num : arr) {
+            if (num != 0)
+                return false;
+        }
+
+        return true;
+    }
+};
