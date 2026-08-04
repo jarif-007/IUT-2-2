@@ -11,6 +11,9 @@ int main()
         int n, k;
         cin >> n >> k;
 
+        string s, t;
+        cin >> s >> t;
+
         
     }
 }
