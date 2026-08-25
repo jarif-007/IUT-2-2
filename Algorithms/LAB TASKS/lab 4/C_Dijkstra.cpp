@@ -42,7 +42,6 @@ int main()
         path.push_back(v);
 
     reverse(path.begin(), path.end());
-
     for (long long v : path)
         cout << v + 1 << " ";
 

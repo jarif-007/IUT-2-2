@@ -26,6 +26,7 @@ int main()
 vector<long long> dijkstra(long long src, vector<vector<pair<long long, long long>>> &adj)
 {
     vector<long long> dist(adj.size(), LLONG_MAX);
+    vector<bool> visited(adj.size());
     dist[src] = 0;
 
     priority_queue<
@@ -40,12 +41,15 @@ vector<long long> dijkstra(long long src, vector<vector<pair<long long, long lon
         auto [dist_u, u] = pq.top();
         pq.pop();
 
-        if (dist_u > dist[u])
+        if (visited[u])
             continue;
 
-        vector<pair<long long, long long>> &neighbors = adj[u];
-        for (auto &[wt, v] : neighbors)
+        visited[u] = true;
+        for (auto &[wt, v] : adj[u])
         {
+            if (visited[v])
+                continue;
+
             if (dist[u] + wt < dist[v])
             {
                 dist[v] = dist[u] + wt;
